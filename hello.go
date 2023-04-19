@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Get a greeting message and print it.
-	message, err := Hello("")
+	message, err := Hello("Catalog")
 	// If an error was returned, print it to the console and
 	// exit the program.
 	if err != nil {
