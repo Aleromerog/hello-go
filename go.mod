@@ -1,3 +1,3 @@
-module example.com/hello
+module github.com/Aleromerog/hello-go
 
 go 1.21
