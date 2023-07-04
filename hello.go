@@ -1,32 +1,27 @@
 package main
 
 import (
-	"errors"
-	"log"
-
 	"fmt"
+
+	epicpizza "github.com/Aleromerog/michipizza"
 )
 
 func main() {
 	// Get a greeting message and print it.
-	message, err := Hello("Catalog")
-	// If an error was returned, print it to the console and
-	// exit the program.
+
+	message, err := epicpizza.RandomPizzaRecipe()
+
 	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(message)
-}
-
-// Hello returns a greeting for the named person.
-func Hello(name string) (string, error) {
-	// If no name was given, return an error with a message.
-	if name == "" {
-		return "", errors.New("empty name")
+		fmt.Printf("%v", err)
 	}
 
-	// If a name was received, return a value that embeds the name
-	// in a greeting message.
-	message := fmt.Sprintf("Hi, %v. Welcome!", name)
-	return message, nil
+	fmt.Println("Ingredients: ")
+	for _, elem := range message["ingredients"] {
+		fmt.Println(elem)
+	}
+
+	fmt.Println("\nInstructions:")
+	for i, elem := range message["instructions"] {
+		fmt.Printf("%d. %v\n\n", i+1, elem)
+	}
 }
